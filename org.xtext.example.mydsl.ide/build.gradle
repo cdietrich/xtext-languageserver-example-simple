@@ -1,0 +1,10 @@
+dependencies {
+	api project(':org.xtext.example.mydsl')
+	api "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
+}
+
+apply plugin: 'application'
+mainClassName = "org.eclipse.xtext.ide.server.ServerLauncher"
+startScripts {
+	applicationName = 'mydsl-standalone'
+}

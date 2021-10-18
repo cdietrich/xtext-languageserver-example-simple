@@ -1,0 +1,73 @@
+{
+    "name": "xtext-vscode-example",
+    "displayName": "Xtext VS Code example",
+    "description": "A simple DSL example for VS Code",
+    "version": "0.0.28",
+    "publisher": "itemis",
+    "icon": "images/itemis.png",
+    "license": "EPL-1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cdietrich/xtext-languageserver-example-simple.git"
+    },
+    "bugs": {
+        "url": "https://github.com/cdietrich/xtext-languageserver-example-simple/issues"
+    },
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:mydsl"
+    ],
+    "main": "out/extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "mydsl",
+                "aliases": [
+                    "mydsl"
+                ],
+                "extensions": [
+                    ".mydsl"
+                ],
+                "configuration": "./mydsl.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mydsl",
+                "scopeName": "text.mydsl",
+                "path": "./syntaxes/mydsl.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "mydsl.a.proxy",
+                "title": "MyDsl Command A"
+            },
+            {
+                "command": "mydsl.b",
+                "title": "MyDsl Command B"
+            }
+        ]
+    },
+    "devDependencies": {
+        "@types/node": "^14.14.37",
+        "@types/vscode": "^1.55.0",
+        "typescript": "^4.2.4",
+        "vscode-test": "^1.5.2"
+    },
+    "dependencies": {
+        "vsce": "^1.100.1",
+        "vscode-languageclient": "^7.0.0"
+    },
+    "scripts": {
+        "prepare": "tsc -p ./src",
+        "compile": "tsc -p ./src",
+        "watch": "tsc -w -p ./src",
+        "update-vscode": "node ./node_modules/vscode/bin/install"
+    }
+}

@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		gradlePluginPortal()
+	}
+	dependencies {
+		classpath 'org.xtext:xtext-gradle-plugin:2.1.0'
+		classpath 'com.github.node-gradle:gradle-node-plugin:2.2.4'
+	}
+}
+
+configure(subprojects.findAll { !it.name.endsWith('vscode') }) {
+	ext.xtextVersion = '2.26.0.M2'
+	repositories {
+		mavenCentral()
+	}
+	
+	apply plugin: 'java-library'
+	dependencies {
+		api platform("org.eclipse.xtext:xtext-dev-bom:${xtextVersion}")
+	}
+
+	apply plugin: 'org.xtext.xtend'
+	apply from: "${rootDir}/gradle/source-layout.gradle"
+	apply plugin: 'eclipse'
+	
+	group = 'org.xtext.example.mydsl'
+	version = '1.0.0-SNAPSHOT'
+	
+	sourceCompatibility = '11'
+	targetCompatibility = '11'
+	
+	configurations.all {
+		exclude group: 'asm'
+	}
+}
