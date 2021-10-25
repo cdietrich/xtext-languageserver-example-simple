@@ -50,7 +50,7 @@ task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
 	doFirst {
 		destDir.mkdirs()
 	}
-	script = file("$npmInstallVsce.destPath/out/vsce")
+	script = file("$npmInstallVsce.destPath/vsce")
 	args = [ 'package', '--out', destPath ]
 	execOverrides {
 		workingDir = projectDir
