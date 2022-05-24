@@ -15,8 +15,8 @@ task clean {
 
 apply plugin: 'com.github.node-gradle.node'
 node {
-	version = '14.18.1'
-	npmVersion = '6.14.15'
+	version = '16.13.2'
+	npmVersion = '8.3.0'
 	download = true
 }
 
