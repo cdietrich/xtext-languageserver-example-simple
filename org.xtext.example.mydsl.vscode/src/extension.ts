@@ -7,6 +7,8 @@ import {Trace} from 'vscode-jsonrpc';
 import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient/node';
 
+let lc: LanguageClient;
+
 export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
     let launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
@@ -40,12 +42,12 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(disposable2);
     
     // enable tracing (.Off, .Messages, Verbose)
-    lc.trace = Trace.Verbose;
-    let disposable = lc.start();
-    
-    // Push the disposable to the context's subscriptions so that the 
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+    lc.setTrace(Trace.Verbose);
+    lc.start();
+}
+
+export function deactivate() {
+	return lc.stop();
 }
 
 function createDebugEnv() {
