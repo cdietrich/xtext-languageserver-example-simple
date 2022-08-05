@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.lsp4j.CodeAction;
 import org.eclipse.lsp4j.CodeActionKind;
 import org.eclipse.lsp4j.CodeActionParams;
@@ -15,7 +16,6 @@ import org.eclipse.lsp4j.WorkspaceEdit;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.xtext.ide.server.Document;
 import org.eclipse.xtext.ide.server.codeActions.ICodeActionService2;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.xtext.example.mydsl.validation.MyDslValidator;
 
@@ -30,7 +30,7 @@ public class MyDslCodeActionService implements ICodeActionService2 {
 	public List<Either<Command, CodeAction>> getCodeActions(ICodeActionService2.Options options) {
 		Document document = options.getDocument();
 		CodeActionParams params = options.getCodeActionParams();
-		XtextResource resource = options.getResource();
+		Resource resource = options.getResource();
 		ArrayList<CodeAction> result = new ArrayList<>();
 		for (Diagnostic d : params.getContext().getDiagnostics()) {
 			if (MyDslValidator.INVALID_NAME.equals(d.getCode().get())) {
