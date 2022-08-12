@@ -18,7 +18,6 @@ import org.eclipse.xtext.ide.server.ILanguageServerAccess;
 import org.eclipse.xtext.ide.server.codeActions.ICodeActionService2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.xtext.example.mydsl.validation.MyDslValidator;
-import org.eclipse.lsp4j.CodeActionParams;
 
 import com.google.common.collect.Lists;
 
