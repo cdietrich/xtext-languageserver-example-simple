@@ -52,14 +52,15 @@ public class RunServer {
 	}
 	
     static <T> Launcher<T> createSocketLauncher(Object localService, Class<T> remoteInterface, SocketAddress socketAddress, ExecutorService executorService, Function<MessageConsumer, MessageConsumer> wrapper) throws IOException {
-        AsynchronousServerSocketChannel serverSocket = AsynchronousServerSocketChannel.open().bind(socketAddress);
-        AsynchronousSocketChannel socketChannel;
-        try {
-            socketChannel = serverSocket.accept().get();
-            return Launcher.createIoLauncher(localService, remoteInterface, Channels.newInputStream(socketChannel), Channels.newOutputStream(socketChannel), executorService, wrapper);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+        try (AsynchronousServerSocketChannel serverSocket = AsynchronousServerSocketChannel.open().bind(socketAddress)) {
+			AsynchronousSocketChannel socketChannel;
+			try {
+			    socketChannel = serverSocket.accept().get();
+			    return Launcher.createIoLauncher(localService, remoteInterface, Channels.newInputStream(socketChannel), Channels.newOutputStream(socketChannel), executorService, wrapper);
+			} catch (InterruptedException | ExecutionException e) {
+			    e.printStackTrace();
+			}
+		}
         return null;
     }
 
