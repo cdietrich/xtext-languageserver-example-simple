@@ -2,10 +2,11 @@
 
 import * as path from 'path';
 import * as os from 'os';
+//import * as net from 'net';
 
 import {Trace} from 'vscode-jsonrpc';
 import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient/node';
+import { LanguageClient, LanguageClientOptions, ServerOptions /*,StreamInfo*/ } from 'vscode-languageclient/node';
 
 let lc: LanguageClient;
 
@@ -13,6 +14,21 @@ export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
     let launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
     let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', launcher));
+
+    /*
+    let connectionInfo = {
+        port: 5007
+    };
+    let serverOptions = () => {
+        // Connect to language server via socket
+        let socket = net.connect(connectionInfo);
+        let result: StreamInfo = {
+            writer: socket,
+            reader: socket
+        };
+        return Promise.resolve(result);
+    };
+    */
 
     let serverOptions: ServerOptions = {
         run : { command: script },
