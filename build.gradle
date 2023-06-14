@@ -10,9 +10,12 @@ buildscript {
 }
 
 configure(subprojects.findAll { !it.name.endsWith('vscode') }) {
-	ext.xtextVersion = '2.31.0'
+	ext.xtextVersion = '2.32.0-SNAPSHOT'
 	repositories {
 		mavenCentral()
+		maven {
+			url 'https://oss.sonatype.org/content/repositories/snapshots'
+		}
 	}
 	
 	apply plugin: 'java-library'
