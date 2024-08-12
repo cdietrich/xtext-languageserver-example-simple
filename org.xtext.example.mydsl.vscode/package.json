@@ -55,14 +55,15 @@
         ]
     },
     "devDependencies": {
+        "@eslint/js": "^9.9.0",
         "@types/node": "^20.14.14",
         "@types/vscode": "^1.92.0",
-        "@typescript-eslint/eslint-plugin": "^7.4.0",
-        "@typescript-eslint/parser": "^7.4.0",
         "@vscode/test-electron": "^2.4.1",
         "esbuild": "^0.23.0",
-        "eslint": "^8.57.0",
-        "typescript": "^5.5.4"
+        "eslint": "^9.9.0",
+        "globals": "^15.9.0",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.0.1"
     },
     "dependencies": {
         "@vscode/vsce": "^2.31.1",
@@ -73,7 +74,7 @@
         "prepare": "tsc -p ./src",
         "vscode:prepublish": "npm run esbuild:extension && npm run lint",
         "esbuild:extension": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-        "lint": "eslint src --ext ts",
+        "lint": "eslint src",
         "compile": "tsc -p ./src",
         "watch": "tsc -w -p ./src",
         "update-vscode": "node ./node_modules/vscode/bin/install"
