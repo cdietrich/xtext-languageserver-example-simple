@@ -12,8 +12,8 @@ let lc: LanguageClient;
 
 export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
-    let launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
-    let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', launcher));
+    const launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
+    const script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', launcher));
 
     /*
     let connectionInfo = {
@@ -30,12 +30,12 @@ export function activate(context: ExtensionContext) {
     };
     */
 
-    let serverOptions: ServerOptions = {
+    const serverOptions: ServerOptions = {
         run : { command: script },
         debug: { command: script, args: [], options: { env: createDebugEnv() } }
     };
     
-    let clientOptions: LanguageClientOptions = {
+    const clientOptions: LanguageClientOptions = {
         documentSelector: ['mydsl'],
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.*')
@@ -43,10 +43,10 @@ export function activate(context: ExtensionContext) {
     };
     
     // Create the language client and start the client.
-    let lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
+    const lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
     
-    var disposable2 =commands.registerCommand("mydsl.a.proxy", async () => {
-        let activeEditor = window.activeTextEditor;
+    const disposable2 =commands.registerCommand("mydsl.a.proxy", async () => {
+        const activeEditor = window.activeTextEditor;
         if (!activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'mydsl') {
             return;
         }
