@@ -4,7 +4,11 @@ dependencies {
 }
 
 apply plugin: 'application'
-mainClassName = "org.eclipse.xtext.ide.server.ServerLauncher"
-startScripts {
-	applicationName = 'mydsl-standalone'
+
+application {
+	mainClass = "org.eclipse.xtext.ide.server.ServerLauncher"
+	startScripts {
+		applicationName = 'mydsl-standalone'
+	}
 }
+
