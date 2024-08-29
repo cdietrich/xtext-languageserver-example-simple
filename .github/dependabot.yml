@@ -4,6 +4,12 @@ updates:
     directory: "org.xtext.example.mydsl.vscode"
     schedule:
       interval: "weekly"
+    groups:
+      eslint-packages:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+          - "*typescript-eslint*"
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
