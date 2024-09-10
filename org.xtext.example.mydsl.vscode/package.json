@@ -14,7 +14,7 @@
         "url": "https://github.com/cdietrich/xtext-languageserver-example-simple/issues"
     },
     "engines": {
-        "vscode": "^1.92.0"
+        "vscode": "^1.93.0"
     },
     "categories": [
         "Programming Languages"
