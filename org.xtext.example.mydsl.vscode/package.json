@@ -66,7 +66,7 @@
         "typescript-eslint": "^8.9.0"
     },
     "dependencies": {
-        "@vscode/vsce": "^3.1.1",
+        "@vscode/vsce": "^3.2.0",
         "vsce": "^2.15.0",
         "vscode-languageclient": "^9.0.1"
     },
