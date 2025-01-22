@@ -29,27 +29,33 @@ npmInstall {
 	outputs.dir('out')
 }
 
-task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
-	ext.destPath = "$projectDir/node_modules/vsce" 
-	outputs.dir(destPath)
-	group 'Node'
-	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
-	args = [ 'install', 'vsce' ]
-}
-
-task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
+task vscodeExtension2(dependsOn: [npmInstall], type: NodeTask) {
 	ext.destDir = new File(buildDir, 'vscode')
 	ext.archiveName = "$project.name-${project.version}.vsix"
 	ext.destPath = "$destDir/$archiveName"
 	inputs.with {
 		files inputFiles
-		dir npmInstallVsce.destPath
 	}
 	outputs.dir destDir
 	doFirst {
 		destDir.mkdirs()
 	}
-	script = file("$npmInstallVsce.destPath/vsce")
+	script = file("node_modules/.bin/vsce")
+	args = [ 'package', '--out', destPath ]
+	execOverrides {
+		workingDir = projectDir
+	}
+}
+
+task vscodeExtension(dependsOn: [npmInstall], type: NodeTask) {
+	ext.destDir = new File(buildDir, 'vscode')
+	ext.archiveName = "$project.name-${project.version}.vsix"
+	ext.destPath = "$destDir/$archiveName"
+	outputs.dir destDir
+	doFirst {
+		destDir.mkdirs()
+	}
+	script = file("node_modules/.bin/vsce")
 	args = [ 'package', '--out', destPath ]
 	execOverrides {
 		workingDir = projectDir
@@ -57,7 +63,6 @@ task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
 }
 
 npmInstall.dependsOn copyApplication
-npmInstall.dependsOn npmInstallVsce
 
 task installExtension(type: Exec, dependsOn: vscodeExtension) {
     if (System.properties['os.name'].toLowerCase().contains('windows')) {
