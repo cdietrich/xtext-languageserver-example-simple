@@ -55,16 +55,16 @@
         ]
     },
     "devDependencies": {
-        "@eslint/js": "^9.20.0",
+        "@eslint/js": "^9.21.0",
         "@types/node": "^20.17.19",
         "@types/vscode": "^1.97.0",
         "@vscode/test-electron": "^2.4.1",
         "@vscode/vsce": "^3.2.2",
         "esbuild": "^0.25.0",
-        "eslint": "^9.20.1",
+        "eslint": "^9.21.0",
         "globals": "^15.15.0",
         "typescript": "^5.7.3",
-        "typescript-eslint": "^8.24.1"
+        "typescript-eslint": "^8.25.0"
     },
     "dependencies": {
         "vscode-languageclient": "^9.0.1"
