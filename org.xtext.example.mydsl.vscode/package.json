@@ -55,13 +55,13 @@
         ]
     },
     "devDependencies": {
-        "@eslint/js": "^9.26.0",
+        "@eslint/js": "^9.27.0",
         "@types/node": "^20.17.46",
         "@types/vscode": "^1.100.0",
         "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.3.2",
         "esbuild": "^0.25.4",
-        "eslint": "^9.26.0",
+        "eslint": "^9.27.0",
         "globals": "^16.1.0",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.32.1"
