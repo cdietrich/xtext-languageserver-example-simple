@@ -60,7 +60,7 @@
         "@types/vscode": "^1.100.0",
         "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.4.2",
-        "esbuild": "^0.25.4",
+        "esbuild": "^0.25.5",
         "eslint": "^9.27.0",
         "globals": "^16.2.0",
         "typescript": "^5.8.3",
