@@ -10,7 +10,7 @@ buildscript {
 }
 
 configure(subprojects.findAll { !it.name.endsWith('vscode') }) {
-	ext.xtextVersion = '2.39.0'
+	ext.xtextVersion = '2.40.0'
 	repositories {
 		mavenCentral()
 	}
