@@ -43,7 +43,7 @@ export function activate(context: ExtensionContext) {
     };
     
     // Create the language client and start the client.
-    const lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
+    lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
     
     const disposable2 =commands.registerCommand("mydsl.a.proxy", async () => {
         const activeEditor = window.activeTextEditor;
