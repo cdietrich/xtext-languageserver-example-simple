@@ -70,12 +70,14 @@
         "vscode-languageclient": "^9.0.1"
     },
     "scripts": {
-        "prepare": "tsc -p ./src",
-        "vscode:prepublish": "npm run esbuild:extension && npm run lint",
+        "prepare": "npm run compile",
+        "vscode:prepublish": "npm run compile && npm run lint",
+        "typecheck": "tsc -p ./src --noEmit",
         "esbuild:extension": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+        "esbuild:watch": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
         "lint": "eslint src",
-        "compile": "tsc -p ./src",
-        "watch": "tsc -w -p ./src",
+        "compile": "npm run typecheck && npm run esbuild:extension",
+        "watch": "npm run esbuild:watch",
         "update-vscode": "node ./node_modules/vscode/bin/install"
     }
 }
