@@ -67,7 +67,7 @@
         "typescript-eslint": "^8.62.1"
     },
     "dependencies": {
-        "vscode-languageclient": "^9.0.1"
+        "vscode-languageclient": "^10.0.1"
     },
     "scripts": {
         "prepare": "npm run compile",
