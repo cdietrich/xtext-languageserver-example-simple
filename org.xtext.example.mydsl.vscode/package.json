@@ -61,10 +61,10 @@
         "@vscode/test-electron": "^3.0.0",
         "@vscode/vsce": "^3.9.2",
         "esbuild": "^0.28.1",
-        "eslint": "^10.6.0",
+        "eslint": "^10.8.0",
         "globals": "^17.8.0",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.63.0"
+        "typescript-eslint": "^8.65.0"
     },
     "dependencies": {
         "vscode-languageclient": "^10.1.0"
