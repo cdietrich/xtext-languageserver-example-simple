@@ -15,7 +15,7 @@ task clean {
 apply plugin: 'com.github.node-gradle.node'
 node {
 	version = '22.22.1'
-	npmVersion = '10.9.4'
+	npmVersion = '11.19.0'
 	download = true
 }
 
