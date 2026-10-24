@@ -55,16 +55,13 @@
         ]
     },
     "devDependencies": {
-        "@eslint/js": "^10.0.1",
         "@types/node": "^22.20.5",
         "@types/vscode": "^1.140.0",
         "@vscode/test-electron": "^3.1.0",
         "@vscode/vsce": "^4.0.0",
         "esbuild": "0.28.2",
-        "eslint": "^10.13.0",
-        "globals": "^17.13.0",
-        "typescript": "^6.0.3",
-        "typescript-eslint": "^8.72.0"
+        "oxlint": "^1.89.0",
+        "typescript": "^7.0.2"
     },
     "dependencies": {
         "vscode-languageclient": "^10.1.2"
@@ -75,7 +72,7 @@
         "typecheck": "tsc -p ./src --noEmit",
         "esbuild:extension": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
         "esbuild:watch": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
-        "lint": "eslint src",
+        "lint": "oxlint src",
         "compile": "npm run typecheck && npm run esbuild:extension",
         "watch": "npm run esbuild:watch",
         "update-vscode": "node ./node_modules/vscode/bin/install"
